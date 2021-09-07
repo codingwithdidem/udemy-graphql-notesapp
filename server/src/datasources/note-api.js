@@ -1,4 +1,5 @@
 const { RESTDataSource } = require("apollo-datasource-rest");
+const { UserInputError } = require("apollo-server-errors");
 
 class NoteAPI extends RESTDataSource {
   constructor() {
@@ -21,6 +22,14 @@ class NoteAPI extends RESTDataSource {
   getAuthor(authorId) {
     return this.get(`authors/${authorId}`);
   }
+
+  incrementNoteViews = async (noteId) => {
+    const note = await this.getNote(noteId);
+
+    return this.patch(`notes/${noteId}`, {
+      numberOfViews: note.numberOfViews + 1,
+    });
+  };
 }
 
 module.exports = NoteAPI;
