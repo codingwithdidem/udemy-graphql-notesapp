@@ -7,6 +7,22 @@ const typeDefs = gql`
     "Single Note for Details Page"
     note(id: ID!): Note
   }
+
+  type Mutation {
+    incrementNoteViews(id: ID!): IncrementNoteViewsResponse
+  }
+
+  type IncrementNoteViewsResponse {
+    "Represents the status of the mutation"
+    code: Int!
+    "Indicates whether the mutation was successful"
+    success: Boolean!
+    "Human-readable message for the UI"
+    message: String!
+    "Newly updated note after a successful mutation"
+    note: Note
+  }
+
   "Author Description"
   type Author {
     id: ID!
