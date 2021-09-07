@@ -4,6 +4,10 @@ const resolvers = {
     notes: (_, __, { dataSources }) => {
       return dataSources.noteAPI.getNotes();
     },
+    // Fetches single note
+    note: (parent, { id }, { dataSources }, info) => {
+      return dataSources.noteAPI.getNote(id);
+    },
   },
   Note: {
     author: ({ authorId }, _, { dataSources }) => {

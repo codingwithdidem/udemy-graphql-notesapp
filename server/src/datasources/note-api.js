@@ -10,6 +10,10 @@ class NoteAPI extends RESTDataSource {
     return this.get("notes");
   }
 
+  getNote(noteId) {
+    return this.get(`notes/${noteId}`);
+  }
+
   getAuthors() {
     return this.get("authors");
   }

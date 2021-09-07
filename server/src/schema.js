@@ -4,6 +4,8 @@ const typeDefs = gql`
   type Query {
     "Notes for homepage"
     notes: [Note!]!
+    "Single Note for Details Page"
+    note(id: ID!): Note
   }
   "Author Description"
   type Author {
@@ -24,6 +26,8 @@ const typeDefs = gql`
     description: String!
     "The author of the note"
     author: Author!
+    "Number of views the note has"
+    numberOfViews: Int!
   }
 `;
 
